@@ -45,16 +45,13 @@ vendor_php_files = $(foreach d,vendor,$(call macro_find_files,$(d),"php"))
 ########################################################################################
 
 .PHONY: prod
-prod: init install_os commands $(COMPOSER_PROD_BUILDS) end
+prod: install_web_server install_os install_composer commands $(COMPOSER_PROD_BUILDS) end 
 
 .PHONY: dev
-dev: init install_os_dev commands_dev $(COMPOSER_DEV_BUILDS) end
-
-.PHONY: init
-init: install_web_server install_composer 
+dev: prod install_os_dev $(COMPOSER_DEV_BUILDS) end 
 
 .PHONY: end
-end: vendor/autoload.php reload_server 
+end: reload_server vendor/autoload.php 
 
 ########################################################################################
 # OS packages
