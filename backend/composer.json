@@ -1,0 +1,71 @@
+{
+    "name": "saxenap/qanda-user-contribution",
+    "description": "",
+    "authors": [
+        {
+            "name": "Praveen Saxena",
+            "email": "saxep01@gmail.com"
+        }
+    ],
+
+    "require": {},
+    "require-dev": {
+        "doctrine/orm": "2.*",
+        "doctrine/migrations": "1.6.*",
+        "zordius/lightncandy": "1.1.*"
+    },
+    "autoload": {
+        "classmap": ["application/"]
+    },
+    "autoload-dev": {
+        "files": ["bootstrap.php", "dev.php"]
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "composer dump-autoload"
+        ],
+        "post-install-cmd": [
+            "composer dump-autoload"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "classmap-authoritative": true,
+        "notify-on-install": false,
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "os_packages": [
+            "glibc-devel",
+            "libcurl-devel",
+            "uuid-devel",
+            "php71",
+            "php71-devel",
+            "php71-json",
+            "php71-mbstring",
+            "php71-mcrypt",
+            "php71-opcache",
+            "php71-pecl-memcached",
+            "php71-mysqlnd",
+            "php71-pdo",
+            "enchant-aspell",
+            "php71-enchant",
+            "hunspell-en"
+        ],
+        "os_packages_dev": [],
+        "commands": [],
+        "commands-dev": []
+
+    }
+}
+
+
+
+
+
+

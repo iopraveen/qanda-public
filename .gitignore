@@ -1,0 +1,10 @@
+# php - composer
+**/vendor/
+composer.lock
+
+# node - npm
+**/node_modules/
+package-lock.json
+
+# misc.
+.htaccess

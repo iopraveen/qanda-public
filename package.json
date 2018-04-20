@@ -1,0 +1,27 @@
+{
+    "name": "qanda",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Q and A",
+    "main": "gulpfile.js",
+    "dependencies": {
+        "gulp": "4.0.*"
+    },
+
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall": "npm run installProject",
+        "installProject": "npm run installFrontend && npm run installBackend",
+        "installBackend": "cd backend && npm run cleandir && npm install --no-optional",
+        "installFrontend": "cd frontend && npm run cleandir && npm install --no-optional",
+        "cleandir": "rm -rf package-lock.json node_modules"
+    },
+    "author": "",
+    "license": "ISC",
+    "config": {
+        "unsafe-perm": true
+    }
+}
+
+

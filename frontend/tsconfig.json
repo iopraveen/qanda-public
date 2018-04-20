@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "outDir": "js_out",
+        "noEmitOnError": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "lib": ["es6", "dom"]
+    },
+    "include": [
+        "src"
+    ]
+}
+
+
+

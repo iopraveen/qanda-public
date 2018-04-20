@@ -1,0 +1,32 @@
+{
+    "name": "qanda-frontend",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Q and A Frontend",
+    "repository": "",
+    "main": "gulpfile.js",
+    "engines": {
+        "node": "9.5.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "babel-core": "*",
+        "babel-preset-es2015": "*",
+        "babelify": "*",
+        "browserify": "*",
+        "declarations": "*",
+        "istanbul": "*",
+        "mocha": "*",
+        "ts-node": "*",
+        "tsify": "*",
+        "typescript": "*"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "config": {
+        "unsafe-perm": true
+    },
+    "author": "",
+    "license": "ISC"
+}
