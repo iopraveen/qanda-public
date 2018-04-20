@@ -157,6 +157,16 @@ $(HTTP_CONF):
 	$(call install_os_pkgs, $(HTTP_OS_PKGS))
 	chkconfig $(HTTP_SERVER) on
 	$(MAKE) server_start
+	#
+	groupadd www
+	usermod -a -G www apache
+	usermod -a -G www ec2-user
+	#
+	chgrp -R www /var/www
+	chown -R root:www /var/www
+	find /var/www -type d -exec sudo chmod 2775 {} +
+	find /var/www -type f -exec sudo chmod 0664 {} +
+	echo " /var/www folder permissions modified."
 
 .PHONY: reload_server
 reload_server: $(HTTP_PID_FILE)
