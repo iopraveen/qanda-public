@@ -11,7 +11,7 @@ HTTP_CONF			?= /etc/httpd/conf/httpd.conf
 HTTP_EXTRA_CONF_DIR	?= /etc/httpd/conf.d
 HTTP_CONF_EXT		?= conf
 HTTP_PID_FILE		?= /var/run/httpd/httpd.pid
-HTTP_OS_PKGS		?= pcre-devel http24-devel
+HTTP_OS_PKGS		?= pcre-devel httpd24-devel
 
 
 COMPOSER_DEV_BUILDS 	?= composer-dev.builds
