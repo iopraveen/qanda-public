@@ -45,13 +45,16 @@ vendor_php_files = $(foreach d,vendor,$(call macro_find_files,$(d),"php"))
 ########################################################################################
 
 .PHONY: prod
-prod: default $(COMPOSER_PROD_BUILDS)
+prod: init install_os commands $(COMPOSER_PROD_BUILDS) end
 
 .PHONY: dev
-dev: default install_os_dev commands_dev $(COMPOSER_DEV_BUILDS)
+dev: init install_os_dev commands_dev $(COMPOSER_DEV_BUILDS) end
 
-.PHONY: default
-default: install_os commands install_web_server install_composer reload_server vendor/autoload.php
+.PHONY: init
+init: install_web_server install_composer 
+
+.PHONY: end
+end: vendor/autoload.php reload_server 
 
 ########################################################################################
 # OS packages
@@ -66,7 +69,7 @@ ifneq ($(os_packages),)
 endif
 
 .PHONY: install_os_dev
-install_os_dev: installed_pkgs_dev.builds
+install_os_dev: install_os installed_pkgs_dev.builds
 
 installed_pkgs_dev.builds: composer.json
 ifneq ($(os_packages_dev),)
@@ -84,7 +87,7 @@ ifneq ($(commands),)
 endif
 
 .PHONY: commands_dev
-commands_dev: commands_dev.builds
+commands_dev: commands commands_dev.builds
 
 commands_dev.builds: composer.json
 ifneq ($(commands_dev),)
