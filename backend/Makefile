@@ -115,6 +115,7 @@ install_composer : $(COMPOSER)
 
 $(COMPOSER): | $(BIN)
 	sudo curl -sS https://getcomposer.org/installer | sudo php	
+	$(COMPOSER) self-update
 
 $(BIN):
 	test -d $(BIN) || mkdir $(BIN)
