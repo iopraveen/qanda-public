@@ -116,6 +116,7 @@ install_composer : $(COMPOSER)
 $(COMPOSER): | $(BIN)
 	sudo curl -sS https://getcomposer.org/installer | sudo php
 	mv composer.phar $(COMPOSER)
+	export COMPOSER_HOME=/root
 	
 
 $(BIN):
