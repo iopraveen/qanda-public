@@ -3,7 +3,7 @@
 
 BIN					?= bin
 
-COMPOSER        	?= composer
+COMPOSER        	?= $(BIN)/composer
 HTTP_SERVER			?= httpd
 
 # a list of directories containing web server configurations
@@ -113,10 +113,13 @@ vendor/autoload.php: $(app_php_files)
 .PHONY: install_composer
 install_composer : $(COMPOSER)
 
-$(COMPOSER):
+$(COMPOSER): | $(BIN)
 	sudo curl -sS https://getcomposer.org/installer | sudo php
-	sudo mv composer.phar /usr/local/bin/composer
-	sudo ln -s /usr/local/bin/composer /usr/bin/composer
+	mv composer.phar $(COMPOSER)
+	
+
+$(BIN):
+	test -d $(BIN) || mkdir $(BIN)
 	
 
 # this is triggered when:
