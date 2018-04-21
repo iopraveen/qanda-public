@@ -22,10 +22,10 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "composer dump-autoload"
+            "@composer dump-autoload"
         ],
         "post-install-cmd": [
-            "composer dump-autoload"
+            "@composer dump-autoload"
         ]
     },
     "minimum-stability": "dev",
