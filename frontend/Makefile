@@ -27,34 +27,16 @@ REMOVE 				= rm -rf
 prod: dev
 
 .PHONY: dev
-dev: update_node_version $(TS_TO_JS_OUT) package-lock.json
+dev: install_node $(TS_TO_JS_OUT) package-lock.json
 
 ########################################################################################
 # Node version
 
-.PHONY: install_nvm
-install_nvm: ~/.nvm/nvm.sh
+.PHONY: install_node
+install_node:
+	curl --silent --location https://rpm.nodesource.com/setup_9.x | sudo bash -
+	yum -y install nodejs
 
-~/.nvm/nvm.sh:
-	-$(REMOVE) .nvmrc
-	git clone git://github.com/creationix/nvm.git ~/.nvm
-	. ~/.bash_profile
-	echo . ~/.nvm/nvm.sh >> ~/.bashrc
-	. ~/.bashrc
-
-.PHONY: update_node_version
-update_node_version: install_nvm _update_node_version
-
-.PHONY: _update_node_version
-_update_node_version: .nvmrc
-
-
-.nvmrc: package.json
-ifneq ($(node_version), $(node_version_nvmrc))
-	echo $(node_version) > .nvmrc
-endif
-	$(call nvm, install $(node_version))
-	$(call nvm, use $(node_version))
 
 ########################################################################################
 # NPM
