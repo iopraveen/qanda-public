@@ -3,7 +3,7 @@
 
 BIN					?= bin
 
-COMPOSER        	?= $(BIN)/composer
+COMPOSER        	?= php composer.phar
 HTTP_SERVER			?= httpd
 
 # a list of directories containing web server configurations
@@ -114,12 +114,7 @@ vendor/autoload.php: $(app_php_files)
 install_composer : $(COMPOSER)
 
 $(COMPOSER): | $(BIN)
-	sudo curl -sS https://getcomposer.org/installer | sudo php
-	mv composer.phar $(COMPOSER)
-	export COMPOSER_HOME=/root
-	. ~/.bash_profile
-	. ~/.bashrc
-	
+	sudo curl -sS https://getcomposer.org/installer | sudo php	
 
 $(BIN):
 	test -d $(BIN) || mkdir $(BIN)
